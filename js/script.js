@@ -2,6 +2,43 @@
 let key = "b574cddc0867196624ca48984d8b52ac";
 let city = "Seattle";
 
+// Received API GET query from https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb
+// Had to sign up for free option that allows 30 requests per minute
+// and 250/month (hard limit)
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '4dcdab804dmsh75ea4e8ffdf2a97p1b44bdjsn8094b65dff75',
+		'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+	}
+};
+
+fetch('https://exercisedb.p.rapidapi.com/exercises/bodyPart/upper%20legs', options)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
+
+
+// Call workouts based on bodyparts
+let bodyPart = "upper legs";
+let bodyPartSearch = [];
+
+$(".search").on("click", function(event){
+  event.preventDefault();
+
+  bodyPart = $(this).parent(".btnBod").siblings(".textVal").val().trim();
+  if (bodyPart === "") {
+    return;
+  };
+  bodyPartSearch.push(bodyPart);
+});
+
+
+
+
+
+
+
 // Current Time and Date
 let date = dayjs().format("dddd, MMMM DD YYYY");
 let dateTime = dayjs().format("dddd, MMMM DD YYYY, hh:mm.ss");
@@ -107,9 +144,7 @@ function getFiveDayForecast() {
 			date: value.dt_txt.split(" ")[0],
 			time: value.dt_txt.split(" ")[1],
 			temp: value.main.temp,
-      speed: value.wind.speed,
 			icon: value.weather[0].icon,
-			humidity: value.main.humidity
 		};
 
 		// learned helpful tip in splitting again in 12/12/22's class
@@ -142,14 +177,17 @@ function getFiveDayForecast() {
 			divElIcon.attr("src", `https://openweathermap.org/img/wn/${weatherCards[i].icon}@2x.png`);
 			divElBody.append(divElIcon);
 
-			// Temperature, Wind Speed and humidity to display on cards
+			// Temperature to display on cards
 			let pElTemp = $("<p>").text(`Temperature: ${weatherCards[i].temp} °F`);
 			divElBody.append(pElTemp);
+
+      // Add specific workout based on search
+      // let pElWorkout = $("<p>").text(`Upper legs`);
+			// divElBody.append(pElTemp);
 		}
 	});
 };
 
-//Data for Seattle
 function initLoad() {
 
 	let citySearchStore = JSON.parse(localStorage.getItem("city"));
