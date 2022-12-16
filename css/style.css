@@ -1,0 +1,59 @@
+/* Global Selectors */
+* {
+  font-family: 'Arvo';
+}
+
+h1 {
+  text-align: center;
+  color: #161515;
+}
+
+label {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+ion-icon {
+  color: white;
+}
+
+/* Class Selectors */
+.icons {
+	height: 80px;
+	width: 80px;
+}
+
+.cardTodaysDate {
+	font-size: 20px;
+}
+
+.cardTodaysCityName {
+  font-size: 30px;
+  font-weight: 800;
+}
+.card {
+	margin: 15px;
+  font-size: 16px;
+}
+.card-mb-3 {
+  background-color: #cfcfcf;
+}
+
+.colOne {
+	background-color: #e2dddd;
+}
+
+.colTwo {
+	background-color: #f0f0f0;
+}
+
+.histBtnRow {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.btn-save {
+  color: white;
+}
