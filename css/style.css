@@ -26,20 +26,21 @@ ion-icon {
 }
 
 .cardTodaysDate {
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .cardTodaysCityName {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 800;
 }
 .card {
 	margin: 15px;
   font-size: 16px;
 }
-.card-mb-3 {
-  background-color: #cfcfcf;
-}
+
+/* .mb-3 {
+  background-color: #9f2929;
+} */
 
 .colOne {
 	background-color: #e2dddd;

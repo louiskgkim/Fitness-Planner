@@ -5,36 +5,33 @@ let city = "Seattle";
 // Received API GET query from https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb
 // Had to sign up for free option that allows 30 requests per minute
 // and 250/month (hard limit)
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '4dcdab804dmsh75ea4e8ffdf2a97p1b44bdjsn8094b65dff75',
-		'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
-	}
-};
+// const options = {
+// 	method: 'GET',
+// 	headers: {
+// 		'X-RapidAPI-Key': '4dcdab804dmsh75ea4e8ffdf2a97p1b44bdjsn8094b65dff75',
+// 		'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+// 	}
+// };
 
-fetch('https://exercisedb.p.rapidapi.com/exercises/bodyPart/upper%20legs', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
-
-
-// Call workouts based on bodyparts
-let bodyPart = "upper legs";
-let bodyPartSearch = [];
-
-$(".search").on("click", function(event){
-  event.preventDefault();
-
-  bodyPart = $(this).parent(".btnBod").siblings(".textVal").val().trim();
-  if (bodyPart === "") {
-    return;
-  };
-  bodyPartSearch.push(bodyPart);
-});
+// fetch('https://exercisedb.p.rapidapi.com/exercises/bodyPart/upper%20legs', options)
+// 	.then(response => response.json())
+// 	.then(response => console.log(response))
+// 	.catch(err => console.error(err));
 
 
+// // Call workouts based on bodyparts
+// let bodyPart = "upper legs";
+// let bodyPartSearch = [];
 
+// $(".search").on("click", function(event){
+//   event.preventDefault();
+
+//   bodyPart = $(this).parent(".btnBod").siblings(".textVal").val().trim();
+//   if (bodyPart === "") {
+//     return;
+//   };
+//   bodyPartSearch.push(bodyPart);
+// });
 
 
 
@@ -75,7 +72,7 @@ function getHistory() {
 		let btnEl = $("<button>").text(`${citySearch[i]}`);
 
 		rowEl.addClass("row histBtnRow");
-		btnEl.addClass("btn btn-outline-secondary histBtn");
+		btnEl.addClass("btn histBtn");
 		btnEl.attr("type", "button");
 
     // prepend: https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
@@ -158,7 +155,7 @@ function getFiveDayForecast() {
 
 			let divElCard = $("<div>");
 			divElCard.attr("class", "card text-black bg-light mb-3 cardOne");
-			divElCard.attr("style", "max-width: 800px;");
+			divElCard.attr("style", "max-width: 1000px;");
 			getFiveDayForecastEl.append(divElCard);
 
 			let divElHeader = $("<div>");

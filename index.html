@@ -17,29 +17,29 @@
 
 <!-- Header Class-->
 <body>
-  <header class="container-fluid text-center text-white bg-dark p-2 weather-header">
+  <header class="container-fluid weather-header">
     <h1>Fitness Planner</h1>
-    <button class="btn save bg-white" type="button">Save</button>
+    <a class="btn"><i class="material-icons left">💪</i>Save </a>
   </header>
 
   <div class="row">
-    <div class="col-12 col-md-3 col-xl-3 colOne">
+    <div class="colOne">
       <label>Search Your City:</label>
       <div class="input-group mb-3">
-        <input type="text" class="form-control textVal" placeholder="City Name...">
+        <input type="text" class="textVal" placeholder="City Name...">
         <div class="input-group-append btnPar">
-          <button class="btn btn-primary search" type="button">
-            <ion-icon name="search-outline"></ion-icon>
+          <button class="btn search" type="button">
+            <ion-icon name="search"></ion-icon>
             <i class="fas fa-search"></i>
           </button>
         </div>
         <br><br>
-      <label>Workout by Body Group:</label>
+      <label>Workout by Body Part:</label>
       <div class="input-group mb-3">
-        <input type="text" class="form-control textVal" placeholder="Body Group...">
+        <input type="text" class="textVal" placeholder="Body Part...">
         <div class="input-group-append btnBod">
-          <button class="btn btn-primary search" type="button">
-            <ion-icon name="search-outline"></ion-icon>
+          <button class="btn search" type="button">
+            <ion-icon name="search"></ion-icon>
             <i class="fas fa-search"></i>
           </button>
         </div>
@@ -47,9 +47,9 @@
       <div class="container citySearch"></div>
     </div>
 
-    <div class="col-12 col-md-9 col-xl-9 colTwo">
+    <div class="colTwo">
       <div class="row today">
-        <div class="card mb-3 bg-light text-black" style="max-width: 800px;">
+        <div class="card mb-3" style="max-width: 1000px;">
           <h2 class="card-header cardTodaysCityName"></h2>
           <h3 class="card-header cardTodaysDate"></h3>
           <img class="icons" />
