@@ -33,10 +33,11 @@
             <i class="fas fa-search"></i>
           </button>
         </div>
+        <div class="container citySearch"></div>
         <br><br>
       <label>Workout by Body Part:</label>
       <div class="input-group mb-3">
-        <input type="text" class="textVal" placeholder="Body Part...">
+        <input type="text" class="textBod" placeholder="Body Part...">
         <div class="input-group-append btnBod">
           <button class="btn search" type="button">
             <ion-icon name="search"></ion-icon>
@@ -44,12 +45,12 @@
           </button>
         </div>
       </div>
-      <div class="container citySearch"></div>
+      <div class="container muscleSearch"></div>
     </div>
 
     <div class="colTwo">
       <div class="row today">
-        <div class="card mb-3" style="max-width: 1000px;">
+        <div class="card mb-3" style="max-width: 800px;">
           <h2 class="card-header cardTodaysCityName"></h2>
           <h3 class="card-header cardTodaysDate"></h3>
           <img class="icons" />
@@ -57,6 +58,16 @@
         </div>
       </div>
       <div class="row fiveForecast"></div>
+
+
+    <div class="colThree">
+      <div class="row muscle">
+        <div class="card mb-3" style="max-width: 800px;">
+          <h2 class="card-header muscleGroup"></h2>
+          <div class="card-body muscleCardContent"></div>
+        </div>
+      </div>
+      <div class="row fiveMuscle"></div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

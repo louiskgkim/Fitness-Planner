@@ -2,12 +2,6 @@
 let key = "b574cddc0867196624ca48984d8b52ac";
 let city = "Seattle";
 
-// Received API GET query from https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb
-// 
-
-
-
-
 // Current Date
 let date = dayjs().format("dddd, MMMM DD YYYY");
 
@@ -18,7 +12,7 @@ let citySearch = [];
 $(".search").on("click", function(event){
   event.preventDefault();
 	// Had to relook into "this" https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
-  city = $(this).parent(".btnPar").siblings(".textVal").val().trim();
+  city = $(this).parent(".btnPar").siblings(".textVal").val();
   if (city === "") {
     return;
   };
@@ -27,40 +21,40 @@ $(".search").on("click", function(event){
 	// set local storage for city's that were searched
   localStorage.setItem("city", JSON.stringify(citySearch));
   getFiveDayForecastEl.empty();
-	getHistory();
+	// getHistory();
 	getTodayWeather();
 });
 
-// Buttons created based on search history
-let constHistEl = $(".citySearch");
-function getHistory() {
-	constHistEl.empty();
+// // Buttons created based on search history
+// let constHistEl = $(".citySearch");
+// function getHistory() {
+// 	constHistEl.empty();
 
-	for (let i = 0; i < citySearch.length; i++) {
+// 	for (let i = 0; i < citySearch.length; i++) {
 
-		// creates a row and button list for the past searched cities
-		let rowEl = $("<row>");
-		let btnEl = $("<button>").text(`${citySearch[i]}`);
+// 		// creates a row and button list for the past searched cities
+// 		let rowEl = $("<row>");
+// 		let btnEl = $("<button>").text(`${citySearch[i]}`);
 
-		rowEl.addClass("row histBtnRow");
-		btnEl.addClass("btn histBtn");
-		btnEl.attr("type", "button");
+// 		rowEl.addClass("row histBtnRow");
+// 		btnEl.addClass("btn histBtn");
+// 		btnEl.attr("type", "button");
 
-    // prepend: https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
-		constHistEl.prepend(rowEl);
-		rowEl.append(btnEl);
-	} if (!city) {
-		return;
-	}
+//     // prepend: https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
+// 		constHistEl.prepend(rowEl);
+// 		rowEl.append(btnEl);
+// 	} if (!city) {
+// 		return;
+// 	}
 
-	// Should allow the buttons to start a search
-	$(".histBtn").on("click", function(event) {
-		event.preventDefault();
-		city = $(this).text();
-		getFiveDayForecastEl.empty();
-		getTodayWeather();
-	});
-};
+// 	// Should allow the buttons to start a search
+// 	$(".histBtn").on("click", function(event) {
+// 		event.preventDefault();
+// 		city = $(this).text();
+// 		getFiveDayForecastEl.empty();
+// 		getTodayWeather();
+// 	});
+// };
 
 let cardContent = $(".cardContent");
 
@@ -126,7 +120,7 @@ function getFiveDayForecast() {
 
 			let divElCard = $("<div>");
 			divElCard.attr("class", "card text-black bg-light mb-3 cardOne");
-			divElCard.attr("style", "max-width: 1000px;");
+			divElCard.attr("style", "max-width: 800px;");
 			getFiveDayForecastEl.append(divElCard);
 
 			let divElHeader = $("<div>");
@@ -149,9 +143,6 @@ function getFiveDayForecast() {
 			let pElTemp = $("<p>").text(`Temperature: ${weatherCards[i].temp} °F`);
 			divElBody.append(pElTemp);
 
-      // Add specific workout based on search
-      // let pElWorkout = $("<p>").text(`Upper legs`);
-			// divElBody.append(pElTemp);
 		}
 	});
 };
@@ -163,8 +154,94 @@ function initLoad() {
 	if (citySearchStore !== null) {
 		citySearch = citySearchStore;
 	}
-	getHistory();
 	getTodayWeather();
+};
+
+
+
+
+
+// muscle starts here
+
+// Received API GET query from https://api-ninjas.com/api/exercises
+
+let key2 = "2V+JOSM/L4NDwhAccQy2NQ==Ff6aU29r1pMP8WuX";
+let muscle = 'biceps';
+
+// $.ajax({
+//     method: 'GET',
+//     url: 'https://api.api-ninjas.com/v1/exercises?muscle=' + muscle,
+//     headers: { 'X-Api-Key': '2V+JOSM/L4NDwhAccQy2NQ==Ff6aU29r1pMP8WuX'},
+//     contentType: 'application/json',
+//     success: function(result) {
+//         console.log(result);
+//     },
+//     error: function ajaxError(jqXHR) {
+//         console.error('Error: ', jqXHR.responseText);
+//     }
+// });
+
+let muscleSearch = [];
+
+// Save text value of search into an array and storage
+$(".search").on("click", function(event){
+  event.preventDefault();
+	
+  muscle = $(this).parent(".btnBod").siblings(".textBod").val();
+  if (muscle === "") {
+    return;
+  };
+  muscleSearch.push(muscle);
+
+	// set local storage for muscle's that were searched
+  localStorage.setItem("muscle", JSON.stringify(muscleSearch));
+});
+
+let fiveMuscleListEl = $(".fiveMuscle");
+
+function fiveMuscleList() {
+	let getUrlMuscle = `https://api.api-ninjas.com/v1/exercises?muscle=`;
+
+  $.ajax({
+    method: 'GET',
+    url: getUrlMuscle + muscle,
+    headers: { 'X-Api-Key': '2V+JOSM/L4NDwhAccQy2NQ==Ff6aU29r1pMP8WuX'},
+    contentType: 'application/json',
+    success: function(result) {
+        console.log(result);
+    },
+    error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+    }
+	}).then(function (response2) {
+		let fiveDayMuscle = response2.list;
+		let muscleCards = [];
+});
+
+  // we need to fix this
+  $.each(fiveDayMuscle, function (index, value) {
+		testObj = {
+			muscle: value.dt_txt.split(" ")[0],
+			workout: value.dt_txt.split(" ")[1],
+		};
+
+		if (value.dt_txt.split(" ")[1] === "12:00:00") {
+			muscleCards.push(testObj);
+		}
+		});
+	
+		//Cards to display on screen
+		for (let i = 0; i < muscleCards.length; i++) {
+
+			let divElCard = $("<div>");
+			divElCard.attr("class", "card text-black bg-light mb-3 cardThree");
+			divElCard.attr("style", "max-width: 800px;");
+			getFiveMuscleListEl.append(divElCard);
+
+			let divElBody = $("<div>");
+			divElBody.attr("class", "card-body");
+			divElCard.append(divElBody);
+		}
 };
 
 initLoad();
