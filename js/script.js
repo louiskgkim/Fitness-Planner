@@ -3,42 +3,13 @@ let key = "b574cddc0867196624ca48984d8b52ac";
 let city = "Seattle";
 
 // Received API GET query from https://rapidapi.com/justin-WFnsXH_t6/api/exercisedb
-// Had to sign up for free option that allows 30 requests per minute
-// and 250/month (hard limit)
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '4dcdab804dmsh75ea4e8ffdf2a97p1b44bdjsn8094b65dff75',
-// 		'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
-// 	}
-// };
-
-// fetch('https://exercisedb.p.rapidapi.com/exercises/bodyPart/upper%20legs', options)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
-
-
-// // Call workouts based on bodyparts
-// let bodyPart = "upper legs";
-// let bodyPartSearch = [];
-
-// $(".search").on("click", function(event){
-//   event.preventDefault();
-
-//   bodyPart = $(this).parent(".btnBod").siblings(".textVal").val().trim();
-//   if (bodyPart === "") {
-//     return;
-//   };
-//   bodyPartSearch.push(bodyPart);
-// });
+// 
 
 
 
 
-// Current Time and Date
+// Current Date
 let date = dayjs().format("dddd, MMMM DD YYYY");
-let dateTime = dayjs().format("dddd, MMMM DD YYYY, hh:mm.ss");
 
 // City history from search
 let citySearch = [];
