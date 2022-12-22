@@ -36,13 +36,21 @@
         <div class="container citySearch"></div>
         <br><br>
       <label>Workout by Body Part:</label>
+      <div class="input-field col s12">
+        <select>
+          <option value="" disabled selected>Choose muscle</option>
+          <option value="1">Biceps</option>
+          <option value="2">Triceps</option>
+          <option value="3">Abdominals</option>
+          <option value="4">Chest</option>
+          <option value="5">Lats</option>
+          <option value="6">Calves</option>
+        </select>
+  
+      </div>
       <div class="input-group mb-3">
-        <input type="text" class="textBod" placeholder="Body Part...">
         <div class="input-group-append btnBod">
-          <button class="btn search" type="button" id="muscle-search">
-            <ion-icon name="search"></ion-icon>
-            <i class="fas fa-search"></i>
-          </button>
+          <br><br>
         </div>
       </div>
       <div class="container muscleSearch"></div>
@@ -63,8 +71,8 @@
     <div class="colThree">
       <div class="row muscle">
         <div class="card mb-3" style="max-width: 800px;">
-          <h2 class="card-header muscleGroup"></h2>
-          <div class="card-body muscleContent"></div>
+          <h2 class="card-header2 muscleGroup"></h2>
+          <div class="card-body2 muscleContent"></div>
           <div class="card-body2 muscleInstructions"></div>
         </div>
       </div>
