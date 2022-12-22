@@ -9,7 +9,7 @@ let date = dayjs().format("dddd, MMMM DD YYYY");
 let citySearch = [];
 
 // Save text value of search into an array and storage
-$(".search").on("click", function(event){
+$("#weather-search").on("click", function(event){
   event.preventDefault();
 	// Had to relook into "this" https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
   city = $(this).parent(".btnPar").siblings(".textVal").val();
@@ -24,37 +24,6 @@ $(".search").on("click", function(event){
 	// getHistory();
 	getTodayWeather();
 });
-
-// // Buttons created based on search history
-// let constHistEl = $(".citySearch");
-// function getHistory() {
-// 	constHistEl.empty();
-
-// 	for (let i = 0; i < citySearch.length; i++) {
-
-// 		// creates a row and button list for the past searched cities
-// 		let rowEl = $("<row>");
-// 		let btnEl = $("<button>").text(`${citySearch[i]}`);
-
-// 		rowEl.addClass("row histBtnRow");
-// 		btnEl.addClass("btn histBtn");
-// 		btnEl.attr("type", "button");
-
-//     // prepend: https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend
-// 		constHistEl.prepend(rowEl);
-// 		rowEl.append(btnEl);
-// 	} if (!city) {
-// 		return;
-// 	}
-
-// 	// Should allow the buttons to start a search
-// 	$(".histBtn").on("click", function(event) {
-// 		event.preventDefault();
-// 		city = $(this).text();
-// 		getFiveDayForecastEl.empty();
-// 		getTodayWeather();
-// 	});
-// };
 
 let cardContent = $(".cardContent");
 
@@ -165,27 +134,28 @@ function initLoad() {
 
 // Received API GET query from https://api-ninjas.com/api/exercises
 
-let key2 = "2V+JOSM/L4NDwhAccQy2NQ==Ff6aU29r1pMP8WuX";
-let muscle = 'biceps';
+// let key2 = "2V+JOSM/L4NDwhAccQy2NQ==Ff6aU29r1pMP8WuX";
+let muscle = [];
 
-// $.ajax({
-//     method: 'GET',
-//     url: 'https://api.api-ninjas.com/v1/exercises?muscle=' + muscle,
-//     headers: { 'X-Api-Key': '2V+JOSM/L4NDwhAccQy2NQ==Ff6aU29r1pMP8WuX'},
-//     contentType: 'application/json',
-//     success: function(result) {
-//         console.log(result);
-//     },
-//     error: function ajaxError(jqXHR) {
-//         console.error('Error: ', jqXHR.responseText);
-//     }
-// });
+$.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/exercises?muscle=biceps' + muscle,
+    headers: { 'X-Api-Key': '2V+JOSM/L4NDwhAccQy2NQ==Ff6aU29r1pMP8WuX'},
+    contentType: 'application/json',
+    success: function(result) {
+        console.log(result);
+    },
+    error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+    }
+});
 
 let muscleSearch = [];
 
 // Save text value of search into an array and storage
-$(".search").on("click", function(event){
+$("#muscle-search").on("click", function(event){
   event.preventDefault();
+  console.log('button clicked')
 	
   muscle = $(this).parent(".btnBod").siblings(".textBod").val();
   if (muscle === "") {
@@ -197,35 +167,39 @@ $(".search").on("click", function(event){
   localStorage.setItem("muscle", JSON.stringify(muscleSearch));
 });
 
+// CALL OUT BUTTON FOR WORKOUTS
+
+
 let fiveMuscleListEl = $(".fiveMuscle");
 
-function fiveMuscleList() {
-	let getUrlMuscle = `https://api.api-ninjas.com/v1/exercises?muscle=`;
 
-  $.ajax({
-    method: 'GET',
-    url: getUrlMuscle + muscle,
-    headers: { 'X-Api-Key': '2V+JOSM/L4NDwhAccQy2NQ==Ff6aU29r1pMP8WuX'},
-    contentType: 'application/json',
-    success: function(result) {
-        console.log(result);
-    },
-    error: function ajaxError(jqXHR) {
-        console.error('Error: ', jqXHR.responseText);
-    }
-	}).then(function (response2) {
-		let fiveDayMuscle = response2.list;
-		let muscleCards = [];
-});
+	function getFiveMuscleList() {
+		let cardContent = $(".cardContent");
+	  let getUrlMuscle = `https://api.api-ninjas.com/v1/exercises?muscle=back`;
+	  
+	  $(cardContent).empty();
+	
+		$.ajax({
+			url: getUrlMuscle,
+			method: "GET",
+	  }).then(function (response) {
+		$(".muscleGroup").text(response.muscle);
+		$(".muscleContent").text(response.name);
+		$(".muscleIntsructions").text(response.instructions);
+	
+		getFiveMuscleList();
+	});
 
   // we need to fix this
   $.each(fiveDayMuscle, function (index, value) {
 		testObj = {
 			muscle: value.dt_txt.split(" ")[0],
-			workout: value.dt_txt.split(" ")[1],
+			name: value.dt_txt.split(" ")[1],
+			instructions: value.dt_txt.split(" ")[2],
+
 		};
 
-		if (value.dt_txt.split(" ")[1] === "12:00:00") {
+		if (value.dt_txt.split(" ")[1] === "muscle") {
 			muscleCards.push(testObj);
 		}
 		});
