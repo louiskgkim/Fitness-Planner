@@ -1,3 +1,4 @@
+// Original weather dashboard js file was from Louis's past challenge: https://github.com/louiskgkim/Weather-Dashboard
 // Received key from https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
 let key = "b574cddc0867196624ca48984d8b52ac";
 let city = "Seattle";
@@ -126,13 +127,14 @@ function initLoad() {
 	getTodayWeather();
 };
 
-
-
-
-
 // muscle starts here
 
 // Received API GET query from https://api-ninjas.com/api/exercises
+function getTodayMuscle() {
+	let cardContent = $(".cardContent");
+	let getUrlMuscle = `https://api.api-ninjas.com/v1/exercises?muscle=`;
+	
+	$(cardContent).empty();
 
 // let key2 = "2V+JOSM/L4NDwhAccQy2NQ==Ff6aU29r1pMP8WuX";
 let muscle = [];
@@ -166,12 +168,11 @@ $("#muscle-search").on("click", function(event){
 	// set local storage for muscle's that were searched
   localStorage.setItem("muscle", JSON.stringify(muscleSearch));
 });
+};
 
 // CALL OUT BUTTON FOR WORKOUTS
 
-
 let fiveMuscleListEl = $(".fiveMuscle");
-
 
 	function getFiveMuscleList() {
 		let cardContent = $(".cardContent");
@@ -185,7 +186,7 @@ let fiveMuscleListEl = $(".fiveMuscle");
 	  }).then(function (response) {
 		$(".muscleGroup").text(response.muscle);
 		$(".muscleContent").text(response.name);
-		$(".muscleIntsructions").text(response.instructions);
+		$(".muscleInstructions").text(response.instructions);
 	
 		getFiveMuscleList();
 	});
@@ -213,8 +214,9 @@ let fiveMuscleListEl = $(".fiveMuscle");
 			getFiveMuscleListEl.append(divElCard);
 
 			let divElBody = $("<div>");
-			divElBody.attr("class", "card-body");
+			divElBody.attr("class", "card-body2");
 			divElCard.append(divElBody);
+
 		}
 };
 
