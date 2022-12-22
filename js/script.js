@@ -137,11 +137,12 @@ function getTodayMuscle() {
 	$(cardContent).empty();
 
 // let key2 = "2V+JOSM/L4NDwhAccQy2NQ==Ff6aU29r1pMP8WuX";
-let muscle = [];
+let muscle = [biceps];
 
 $.ajax({
     method: 'GET',
-    url: 'https://api.api-ninjas.com/v1/exercises?muscle=biceps' + muscle,
+		// need to work on template literals https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+    url: `https://api.api-ninjas.com/v1/exercises?muscle=${muscle}` + muscle,
     headers: { 'X-Api-Key': '2V+JOSM/L4NDwhAccQy2NQ==Ff6aU29r1pMP8WuX'},
     contentType: 'application/json',
     success: function(result) {
@@ -154,7 +155,6 @@ $.ajax({
 
 let muscleSearch = [];
 
-// Save text value of search into an array and storage
 $("#muscle-search").on("click", function(event){
   event.preventDefault();
   console.log('button clicked')
@@ -165,7 +165,6 @@ $("#muscle-search").on("click", function(event){
   };
   muscleSearch.push(muscle);
 
-	// set local storage for muscle's that were searched
   localStorage.setItem("muscle", JSON.stringify(muscleSearch));
 });
 };
@@ -176,6 +175,7 @@ let fiveMuscleListEl = $(".fiveMuscle");
 
 	function getFiveMuscleList() {
 		let cardContent = $(".cardContent");
+		// need to work on template literals https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 	  let getUrlMuscle = `https://api.api-ninjas.com/v1/exercises?muscle=back`;
 	  
 	  $(cardContent).empty();
