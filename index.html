@@ -10,16 +10,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap" rel="stylesheet">
   <!--Import materialize.css from https://materializecss.com/-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
   <link rel="stylesheet" href="./css/style.css" />
   <title>Fitness Planner</title>
 </head>
 
 <!-- Header Class-->
+
 <body>
   <header class="container-fluid weather-header">
     <h1 class="center-align">Fitness Planner</h1>
-    <a class="btn"><i class="material-icons left">💪</i>Save </a>
+    <!-- Removed save button as we believe it was not needed -->
+    <!-- <a class="btn"><i class="material-icons left">💪</i>Save </a> -->
   </header>
 
   <div class="row">
@@ -35,30 +37,44 @@
         </div>
         <div class="container citySearch"></div>
         <br><br>
-      <label>Workout by Body Part:</label>
-      <div class="input-field col s12">
-        <select>
-          <option value="" disabled selected>Choose muscle</option>
-          <option value="1">Biceps</option>
-          <option value="2">Triceps</option>
-          <option value="3">Abdominals</option>
-          <option value="4">Chest</option>
-          <option value="5">Lats</option>
-          <option value="6">Calves</option>
-        </select>
-  
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-append btnBod">
-          <br><br>
+        <label for="muscleOptions">Workout by Body Part:</label>
+        <div class="input-group mb-3">
+          <div class="input-group-append btnBod">
+            <select id="muscleOptions">
+              <option value="" disabled selected>Choose muscle</option>
+              <option value="biceps">Biceps</option>
+              <option value="triceps">Triceps</option>
+              <option value="abdominals">Abdominals</option>
+              <option value="chest">Chest</option>
+              <option value="lats">Lats</option>
+              <option value="calves">Calves</option>
+            </select>
+            <button class="btn search" type="button" id="muscle-search">Search the Muscle Group</button>
+
+            <!-- Found this script in https://www.javascripttutorial.net/javascript-dom/javascript-select-box/#:~:text=To%20interact%20with%20element,if%20no%20option%20is%20selected -->
+            <script>
+              const btn = document.querySelector('#btn');
+              const sb = document.querySelector('#muscleOptions')
+              btn.onclick = (event) => {
+                event.preventDefault();
+                const selectedValues = [].filter
+                  .call(sb.options, option => option.selected)
+                  .map(option => option.text);
+                // removed alert as that is not allowed for the project
+                // MAKE SURE TO REMOVE ALERT BEFORE SUBMITTING
+                // alert(selectedValues);
+              };
+            </script>
+          </div>
         </div>
+        <div class="container muscleSearch"></div>
       </div>
-      <div class="container muscleSearch"></div>
+      <br><br>
     </div>
 
     <div class="colTwo">
       <div class="row today">
-        <div class="card mb-3" style="max-width: 800px;">
+        <div class="card mb-3" style="max-width: 1000px;">
           <h2 class="card-header cardTodaysCityName"></h2>
           <h3 class="card-header cardTodaysDate"></h3>
           <img class="icons" />
@@ -68,23 +84,23 @@
       <div class="row fiveForecast"></div>
 
 
-    <div class="colThree">
-      <div class="row muscle">
-        <div class="card mb-3" style="max-width: 800px;">
-          <h2 class="card-header2 muscleGroup"></h2>
-          <div class="card-body2 muscleContent"></div>
-          <div class="card-body2 muscleInstructions"></div>
+      <div class="colThree">
+        <div class="row muscle">
+          <div class="card mb-3" style="max-width: 1000px;">
+            <h2 class="card-header2 muscleGroup"></h2>
+            <div class="card-body2 muscleContent"></div>
+            <div class="card-body2 muscleInstructions"></div>
+          </div>
         </div>
+        <div class="row fiveMuscle"></div>
       </div>
-      <div class="row fiveMuscle"></div>
-    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
-    <!-- Materialize js file downloaded from https://materializecss.com/ -->
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script src="./js/script.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+      <!-- Materialize js file downloaded from https://materializecss.com/ -->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script src="./js/script.js"></script>
 </body>
 
 </html>
