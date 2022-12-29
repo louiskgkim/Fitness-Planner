@@ -128,7 +128,7 @@ function initLoad() {
 };
 
 // MUSCLE STARTS HERE
-let muscle = "biceps";
+let muscle = [];
 
 $("#muscleOptions").on("change", function (event) {
 	event.preventDefault();
