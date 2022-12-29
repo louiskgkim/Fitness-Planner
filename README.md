@@ -14,16 +14,16 @@ while creating an application was a huge key point in this project to show futur
 collaborative skills and coding abilities.
 
 ### Starter Page
-
+![Starter Page](https://user-images.githubusercontent.com/115679155/209892513-f8100e47-9a6f-47b1-9101-d858cc4d35ff.png)
 
 ### Search New City
-
+<img width="1524" alt="Search New City" src="https://user-images.githubusercontent.com/115679155/209892515-816254c3-dec3-4cdd-ae1c-67e0491f0a03.png">
 
 ### Muscle Group Options
-
+<img width="1530" alt="Muscle Group options" src="https://user-images.githubusercontent.com/115679155/209892533-b8968f58-c71f-46ed-b09e-7a000f6ba424.png">
 
 ### Workout Name, Muscle Group, Instructions
-
+<img width="1525" alt="Workout Name, Muscle Group, Instructions" src="https://user-images.githubusercontent.com/115679155/209892518-c1231de6-8855-40c2-9c15-7a8388618212.png">
 
 
 ## 2. How to Get There
