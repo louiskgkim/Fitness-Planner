@@ -31,7 +31,7 @@ collaborative skills and coding abilities.
 Open your web browser and enter the following web address to access:
 
 ```
-add link later
+https://louiskgkim.github.io/Fitness-Planner/
 ```
 
 
