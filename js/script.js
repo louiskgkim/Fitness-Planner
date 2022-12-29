@@ -172,6 +172,8 @@ function getTodayMuscle() {
 		error: function ajaxError(jqXHR) {
 			console.error('Error: ', jqXHR.responseText);
 		}
+		// creating p tags in order to pull information from the API regarding the workouts
+		// by the muscle group
 	}).then(function (response) {
 		response.forEach(workout => {
 			console.log(workout.name);
